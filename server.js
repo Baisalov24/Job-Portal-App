@@ -11,8 +11,13 @@ connectDB();
 app.use(cors());
 app.use(express.json());
 
-const userRoutes = require("./routes/userRoutes");
+const logger = require("./middleware/loggerMiddleware");
+const errorHandler = require("./middleware/errorMiddleware");
+
+app.use(logger);
 app.use("/api/users", userRoutes);
+
+app.use(errorHandler);
 
 const PORT = process.env.PORT || 5000;
 app.listen(PORT, () => {
