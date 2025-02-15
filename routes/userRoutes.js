@@ -1,5 +1,5 @@
-import express from "express";
-import User from "../models/UserModel.js";
+const express = require("express");
+const User = require("../models/UserModel");
 
 const router = express.Router();
 
@@ -11,7 +11,6 @@ router.get("/", async (req, res) => {
     res.status(500).json({ message: "Server error" });
   }
 });
-
 
 router.get("/:id", async (req, res) => {
   try {
@@ -25,4 +24,12 @@ router.get("/:id", async (req, res) => {
   }
 });
 
-export default router;
+router.get("/profile", (req, res) => {
+  if (req.oidc.isAuthenticated()) {
+    res.json(req.oidc.user);
+  } else {
+    res.status(401).json({ message: "Not authenticated" });
+  }
+});
+
+module.exports = router;
