@@ -28,6 +28,7 @@ const errorHandler = require("./middleware/errorMiddleware");
 
 app.use(logger);
 app.use("/api/users", require("./routes/userRoutes"));
+app.use("/api/jobs", require("./routes/jobRoutes"));
 
 app.use(errorHandler);
 
