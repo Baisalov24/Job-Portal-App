@@ -17,6 +17,8 @@ export default function FindWork() {
   const [jobs, setJobs] = useState<Job[]>([]);
   const [filteredJobs, setFilteredJobs] = useState<Job[]>([]);
   const [selectedJobTypes, setSelectedJobTypes] = useState<string[]>([]);
+  const [searchQuery, setSearchQuery] = useState("");
+  const [searchLocation, setSearchLocation] = useState("");
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
@@ -33,30 +35,29 @@ export default function FindWork() {
       });
   }, []);
 
-  const handleSearch = (query: string, location: string) => {
+  const filterJobs = () => {
     let filtered = jobs.filter(
       (job) =>
-        job.title.toLowerCase().includes(query.toLowerCase()) &&
-        job.location.toLowerCase().includes(location.toLowerCase())
+        job.title.toLowerCase().includes(searchQuery.toLowerCase()) &&
+        job.location.toLowerCase().includes(searchLocation.toLowerCase()) &&
+        (selectedJobTypes.length === 0 || selectedJobTypes.includes(job.jobType))
     );
 
-    if (selectedJobTypes.length > 0) {
-      filtered = filtered.filter((job) => selectedJobTypes.includes(job.jobType));
-    }
-
     setFilteredJobs(filtered);
+  };
+
+  const handleSearch = (query: string, location: string) => {
+    setSearchQuery(query);
+    setSearchLocation(location);
   };
 
   const handleFilterChange = (jobTypes: string[]) => {
     setSelectedJobTypes(jobTypes);
-
-    let filtered = jobs.filter(
-      (job) =>
-        (jobTypes.length === 0 || jobTypes.includes(job.jobType))
-    );
-
-    setFilteredJobs(filtered);
   };
+
+  useEffect(() => {
+    filterJobs();
+  }, [searchQuery, searchLocation, selectedJobTypes, jobs]);
 
   if (loading) return <p>Loading jobs...</p>;
 
@@ -66,7 +67,6 @@ export default function FindWork() {
         <Filters selectedJobTypes={selectedJobTypes} onFilterChange={handleFilterChange} />
       </div>
 
-      
       <div className="w-3/4">
         <SearchForm onSearch={handleSearch} />
         <JobList jobs={filteredJobs} />
