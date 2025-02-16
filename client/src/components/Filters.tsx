@@ -2,11 +2,11 @@
 import React from "react";
 
 interface FiltersProps {
-  selectedJobTypes: string[];
+  selectedJobTypes: string[]; 
   onFilterChange: (jobTypes: string[]) => void;
 }
 
-export default function Filters({ selectedJobTypes, onFilterChange }: FiltersProps) {
+export default function Filters({ selectedJobTypes = [], onFilterChange }: FiltersProps) {
   const handleCheckboxChange = (jobType: string) => {
     const updatedJobTypes = selectedJobTypes.includes(jobType)
       ? selectedJobTypes.filter((t) => t !== jobType)
@@ -22,7 +22,7 @@ export default function Filters({ selectedJobTypes, onFilterChange }: FiltersPro
         <label key={type} className="block">
           <input
             type="checkbox"
-            checked={selectedJobTypes.includes(type)}
+            checked={selectedJobTypes?.includes(type)} 
             onChange={() => handleCheckboxChange(type)}
             className="mr-2"
           />

@@ -6,7 +6,10 @@ const jobs = [
   { id: "3", title: "UI/UX Designer", company: "DesignPro", location: "San Francisco", salary: "£90,000", jobType: "Contract", description: "Create beautiful UI designs." }
 ];
 
-export async function GET() {
-  return NextResponse.json(jobs);
+export async function GET(req: Request, { params }: { params: { id: string } }) {
+  const job = jobs.find((j) => j.id === params.id);
+  if (!job) {
+    return NextResponse.json({ message: "Job not found" }, { status: 404 });
+  }
+  return NextResponse.json(job);
 }
-  
