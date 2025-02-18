@@ -1,8 +1,8 @@
 // File: C:\Users\User\Desktop\front-end\Frontend\Last Shot 31.01.2025\Job-Portal-App\client\src\app\api\jobs\[id]\route.ts
-import * as entry from '../../../../../../app/api/jobs/[id]/route.js'
+import * as entry from '../../../../../../src/app/api/jobs/[id]/route.js'
 import type { NextRequest } from 'next/server.js'
 
-type TEntry = typeof import('../../../../../../app/api/jobs/[id]/route.js')
+type TEntry = typeof import('../../../../../../src/app/api/jobs/[id]/route.js')
 
 type SegmentParams<T extends Object = any> = T extends Record<string, any>
   ? { [K in keyof T]: T[K] extends string ? string | string[] | undefined : never }

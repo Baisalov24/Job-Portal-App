@@ -16,11 +16,6 @@
       "static/chunks/main-app.js",
       "static/chunks/app/api/auth/[...nextauth]/route.js"
     ],
-    "/myjobs/page": [
-      "static/chunks/webpack.js",
-      "static/chunks/main-app.js",
-      "static/chunks/app/myjobs/page.js"
-    ],
     "/findwork/page": [
       "static/chunks/webpack.js",
       "static/chunks/main-app.js",
@@ -30,11 +25,6 @@
       "static/chunks/webpack.js",
       "static/chunks/main-app.js",
       "static/chunks/app/api/jobs/route.js"
-    ],
-    "/post/page": [
-      "static/chunks/webpack.js",
-      "static/chunks/main-app.js",
-      "static/chunks/app/post/page.js"
     ],
     "/job/[id]/page": [
       "static/chunks/webpack.js",
@@ -46,10 +36,10 @@
       "static/chunks/main-app.js",
       "static/chunks/app/api/jobs/[id]/route.js"
     ],
-    "/api/applications/route": [
+    "/myjobs/page": [
       "static/chunks/webpack.js",
       "static/chunks/main-app.js",
-      "static/chunks/app/api/applications/route.js"
+      "static/chunks/app/myjobs/page.js"
     ]
   }
 }
