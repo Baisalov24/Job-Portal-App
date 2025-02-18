@@ -30,7 +30,7 @@ const config = {
     absoluteDuration: 30 * 24 * 60 * 60 * 1000,
     cookie: {
       domain: "jobfindr-q1cl.onrender.com",
-      secure: true,
+      secure: false,
       sameSite: "None",
     },
   },

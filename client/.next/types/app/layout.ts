@@ -1,8 +1,8 @@
-// File: C:\Users\User\Desktop\front-end\Frontend\Last Shot 31.01.2025\Job-Portal-App\client\src\app\layout.tsx
-import * as entry from '../../../app/layout.jsx'
+// File: C:\Users\User\Desktop\front-end\Frontend\Last Shot 31.01.2025\Job-Portal-App\client\app\layout.tsx
+import * as entry from '../../../app/layout.js'
 import type { ResolvingMetadata, ResolvingViewport } from 'next/dist/lib/metadata/types/metadata-interface.js'
 
-type TEntry = typeof import('../../../app/layout.jsx')
+type TEntry = typeof import('../../../app/layout.js')
 
 type SegmentParams<T extends Object = any> = T extends Record<string, any>
   ? { [K in keyof T]: T[K] extends string ? string | string[] | undefined : never }

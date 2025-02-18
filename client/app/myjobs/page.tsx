@@ -18,10 +18,9 @@ function page() {
 
   const router = useRouter();
 
-  // Redirect to login if not authenticated
   useEffect(() => {
     if (!loading && !isAuthenticated) {
-      router.push("https://jobfindr-q1cl.onrender.com/login");
+      router.push("http://localhost:5000/login");
     }
   }, [isAuthenticated]);
 
