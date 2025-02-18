@@ -1,26 +1,81 @@
 "use client";
-import React from "react";
+import { useGlobalContext } from "@/context/globalContext";
+import { LogIn, UserPlus } from "lucide-react";
+import Image from "next/image";
 import Link from "next/link";
-import { useSession, signIn, signOut } from "next-auth/react";
+import { usePathname } from "next/navigation";
+import React from "react";
+import Profile from "./Profile";
 
-export default function Header() {
-  const { data: session } = useSession();
-
+function Header() {
+  const { isAuthenticated } = useGlobalContext();
+  const pathname = usePathname();
   return (
-    <header className="bg-blue-600 text-white p-4 flex justify-between">
-      <Link href="/" className="text-xl font-bold">Job Portal</Link>
-      <nav className="flex items-center gap-4">
-        <Link href="/findwork" className="px-4">Find Work</Link>
-        {session && <Link href="/myjobs" className="px-4">My Jobs</Link>}
-        <Link href="/post" className="px-4">Post a Job</Link>
+    <header className="px-10 py-6 bg-[#D7DEDC] text-gray-500 flex justify-between items-center">
+      <Link href={"/"} className="flex items-center gap-2">
+        <Image src="/logo.svg" alt="logo" width={45} height={45} />
+        <h1 className="font-extrabold text-2xl text-[#7263f3]">JobFindr</h1>
+      </Link>
 
-        
-        {session ? (
-          <button onClick={() => signOut()} className="bg-red-500 px-4 py-2 rounded">Logout</button>
+      <ul className="flex items-center gap-8">
+        <li>
+          <Link
+            href={"/findwork"}
+            className={`py-2 px-6 rounded-md ${
+              pathname === "/findwork"
+                ? "text-[#7263F3] border-[#7263F3] border bg-[#7263F3]/10"
+                : ""
+            }`}
+          >
+            Find Work
+          </Link>
+          <Link
+            href={"/myjobs"}
+            className={`py-2 px-6 rounded-md ${
+              pathname === "/myjobs"
+                ? "text-[#7263F3] border-[#7263F3] border bg-[#7263F3]/10"
+                : ""
+            }`}
+          >
+            My Jobs
+          </Link>
+          <Link
+            href={"/post"}
+            className={`py-2 px-6 rounded-md ${
+              pathname === "/post"
+                ? "text-[#7263F3] border-[#7263F3] border bg-[#7263F3]/10"
+                : ""
+            }`}
+          >
+            Post a Job
+          </Link>
+        </li>
+      </ul>
+
+      <div className="flex items-center gap-4">
+        {isAuthenticated ? (
+          <Profile />
         ) : (
-          <button onClick={() => signIn("auth0")} className="bg-green-500 px-4 py-2 rounded">Login</button>
+          <div className="flex items-center gap-6">
+            <Link
+              href={"https://jobfindr-q1cl.onrender.com/login"}
+              className="py-2 px-6 rounded-md border flex items-center gap-4 bg-[#7263F3] text-white border-[#7263F3] hover:bg-[#7263F3]/90 trasition-all duration-200 ease-in-out"
+            >
+              <LogIn className="w-4 h-4" />
+              Login
+            </Link>
+            <Link
+              href={"https://jobfindr-q1cl.onrender.com/login"}
+              className="py-2 px-6 rounded-md border flex items-center gap-4 border-[#7263F3] text-[#7263F3] hover:bg-[#7263F3]/10 trasition-all duration-200 ease-in-out"
+            >
+              <UserPlus className="w-4 h-4" />
+              Register
+            </Link>
+          </div>
         )}
-      </nav>
+      </div>
     </header>
   );
 }
+
+export default Header;
