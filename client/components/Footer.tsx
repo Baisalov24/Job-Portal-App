@@ -1,10 +1,13 @@
-"use client";
 import React from "react";
 
-export default function Footer() {
+function Footer() {
   return (
-    <footer className="bg-gray-800 text-white text-center p-4 mt-6">
-      <p>&copy; {new Date().getFullYear()} Job Portal. All rights reserved.</p>
+    <footer className="py-12 bg-white">
+      <div className="mx-auto px-4 text-center text-black">
+        <p>&copy; {new Date().getFullYear()}All rights reserved</p>
+      </div>
     </footer>
   );
 }
+
+export default Footer;
