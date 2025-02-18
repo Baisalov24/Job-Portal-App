@@ -1,35 +1,19 @@
-const express = require("express");
-const User = require("../models/UserModel");
+import express from "express";
+import { getUserProfile } from "../controllers/userController.js";
 
 const router = express.Router();
 
-router.get("/", async (req, res) => {
-  try {
-    const users = await User.find();
-    res.json(users);
-  } catch (error) {
-    res.status(500).json({ message: "Server error" });
-  }
-});
-
-router.get("/:id", async (req, res) => {
-  try {
-    const user = await User.findById(req.params.id);
-    if (!user) {
-      return res.status(404).json({ message: "User not found" });
-    }
-    res.json(user);
-  } catch (error) {
-    res.status(500).json({ message: "Server error" });
-  }
-});
-
-router.get("/profile", (req, res) => {
+router.get("/check-auth", (req, res) => {
   if (req.oidc.isAuthenticated()) {
-    res.json(req.oidc.user);
+    return res.status(200).json({
+      isAuthenticated: true,
+      user: req.oidc.user,
+    });
   } else {
-    res.status(401).json({ message: "Not authenticated" });
+    return res.status(200).json(false);
   }
 });
 
-module.exports = router;
+router.get("/user/:id", getUserProfile);
+
+export default router;
