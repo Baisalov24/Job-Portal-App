@@ -1,35 +1,30 @@
 import express from "express";
-import Job from "../models/JobModel.js"; // ✅ Проверяем путь
+import {
+  createJob,
+  getJobs,
+  getJobsByUser,
+  searchJobs,
+  applyJob,
+  likeJob,
+  getJobById,
+  deleteJob,
+} from "../controllers/jobController.js";
+import protect from "../middleware/protect.js";
 
 const router = express.Router();
 
-// 📌 POST /api/jobs — Создать вакансию
-router.post("/", async (req, res) => {
-  try {
-    console.log("Received job data:", req.body); // ✅ Лог перед сохранением
+router.post("/jobs", protect, createJob);
+router.get("/jobs", getJobs);
+router.get("/jobs/user/:id", protect, getJobsByUser);
 
-    const { title, description, company, location, salary } = req.body;
+router.get("/jobs/search", searchJobs);
 
-    if (!title || !company || !location) {
-      return res.status(400).json({ message: "Missing required fields" });
-    }
+router.put("/jobs/apply/:id", protect, applyJob);
 
-    const newJob = new Job({
-      title,
-      description,
-      company,
-      location,
-      salary,
-    });
+router.put("/jobs/like/:id", protect, likeJob);
 
-    await newJob.save();
-    console.log("Job saved to MongoDB:", newJob); // ✅ Лог успешного сохранения
+router.get("/jobs/:id", protect, getJobById);
 
-    res.status(201).json(newJob);
-  } catch (error) {
-    console.error("Error saving job:", error);
-    res.status(500).json({ message: "Server error" });
-  }
-});
+router.delete("/jobs/:id", protect, deleteJob);
 
 export default router;
