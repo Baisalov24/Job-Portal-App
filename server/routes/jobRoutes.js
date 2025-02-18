@@ -1,66 +1,35 @@
-const express = require("express");
-const Job = require("../models/JobModel");
+import express from "express";
+import Job from "../models/JobModel.js"; // ✅ Проверяем путь
 
 const router = express.Router();
 
+// 📌 POST /api/jobs — Создать вакансию
 router.post("/", async (req, res) => {
   try {
+    console.log("Received job data:", req.body); // ✅ Лог перед сохранением
+
     const { title, description, company, location, salary } = req.body;
+
+    if (!title || !company || !location) {
+      return res.status(400).json({ message: "Missing required fields" });
+    }
+
     const newJob = new Job({
       title,
       description,
       company,
       location,
       salary,
-      postedBy: req.oidc.user.sub,
     });
 
     await newJob.save();
+    console.log("Job saved to MongoDB:", newJob); // ✅ Лог успешного сохранения
+
     res.status(201).json(newJob);
   } catch (error) {
+    console.error("Error saving job:", error);
     res.status(500).json({ message: "Server error" });
   }
 });
 
-router.get("/", async (req, res) => {
-  try {
-    const jobs = await Job.find();
-    res.json(jobs);
-  } catch (error) {
-    res.status(500).json({ message: "Server error" });
-  }
-});
-
-router.get("/:id", async (req, res) => {
-  try {
-    const job = await Job.findById(req.params.id);
-    if (!job) {
-      return res.status(404).json({ message: "Job not found" });
-    }
-    res.json(job);
-  } catch (error) {
-    res.status(500).json({ message: "Server error" });
-  }
-});
-
-router.put("/:id", async (req, res) => {
-  try {
-    const updatedJob = await Job.findByIdAndUpdate(req.params.id, req.body, {
-      new: true,
-    });
-    res.json(updatedJob);
-  } catch (error) {
-    res.status(500).json({ message: "Server error" });
-  }
-});
-
-router.delete("/:id", async (req, res) => {
-  try {
-    await Job.findByIdAndDelete(req.params.id);
-    res.json({ message: "Job deleted" });
-  } catch (error) {
-    res.status(500).json({ message: "Server error" });
-  }
-});
-
-module.exports = router;
+export default router;

@@ -1,36 +1,25 @@
-const express = require("express");
-const dotenv = require("dotenv");
-const cors = require("cors");
-const connectDB = require("./db/connect");
-const { auth } = require("express-openid-connect");
+import express from "express";
+import dotenv from "dotenv";
+import cors from "cors";
+import connectDB from "./db/connect.js";
+import applicationRoutes from "./routes/applicationRoutes.js"
+import jobRoutes from "./routes/jobRoutes.js";
 
 dotenv.config();
 const app = express();
+console.log("Loaded MONGO_URI:", process.env.MONGO_URI);
 
 connectDB();
 
-app.use(cors());
+// Исправленные CORS-настройки
+app.use(cors({
+  origin: "http://localhost:3000", // URL вашего React-приложения
+  methods: ["GET", "POST"]
+}));
+
 app.use(express.json());
-
-const config = {
-  authRequired: false,
-  auth0Logout: true,
-  secret: process.env.SECRET,
-  baseURL: process.env.BASE_URL,
-  clientID: process.env.CLIENT_ID,
-  issuerBaseURL: process.env.ISSUER_BASE_URL,
-};
-
-app.use(auth(config));
-
-const logger = require("./middleware/loggerMiddleware");
-const errorHandler = require("./middleware/errorMiddleware");
-
-app.use(logger);
-app.use("/api/users", require("./routes/userRoutes"));
-app.use("/api/jobs", require("./routes/jobRoutes"));
-
-app.use(errorHandler);
+app.use("/api/applications", applicationRoutes);
+app.use("/api/jobs", jobRoutes);
 
 const PORT = process.env.PORT || 5000;
 app.listen(PORT, () => {

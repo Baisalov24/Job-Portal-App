@@ -7,7 +7,7 @@ const jobs = [
 ];
 
 export async function GET(req: Request, { params }: { params: { id: string } }) {
-  const job = jobs.find((j) => j.id === params.id);
+  const job = jobs.find((j) => String(j.id) === String(params.id));
   if (!job) {
     return NextResponse.json({ message: "Job not found" }, { status: 404 });
   }

@@ -1,0 +1,10 @@
+POST http://localhost:5000/api/jobs
+Content-Type: application/json
+
+{
+  "title": "Full-Stack Developer",
+  "description": "React, Node.js, MongoDB",
+  "company": "Meta",
+  "location": "California",
+  "salary": "$130,000"
+}

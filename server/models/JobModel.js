@@ -1,15 +1,13 @@
-const mongoose = require("mongoose");
+import mongoose from "mongoose";
 
-const JobSchema = new mongoose.Schema(
-  {
-    title: { type: String, required: true },
-    description: { type: String, required: true },
-    company: { type: String, required: true },
-    location: { type: String, required: true },
-    salary: { type: Number, required: true },
-    postedBy: { type: mongoose.Schema.Types.ObjectId, ref: "User" },
-  },
-  { timestamps: true }
-);
+const JobSchema = new mongoose.Schema({
+  title: { type: String, required: true },
+  description: { type: String },
+  company: { type: String, required: true },
+  location: { type: String, required: true },
+  salary: { type: String },
+});
 
-module.exports = mongoose.model("Job", JobSchema);
+const Job = mongoose.model("Job", JobSchema);
+
+export default Job;
