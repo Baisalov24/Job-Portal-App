@@ -1,7 +1,7 @@
 "use client";
 import React, { useEffect, useState } from "react";
 import { useParams } from "next/navigation";
-import ApplyForm from "@/components/ApplyForm";
+import ApplyForm from "components/ApplyForm";
 
 interface Job {
   id: string;

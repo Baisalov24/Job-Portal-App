@@ -1,8 +1,8 @@
 "use client";
 import React, { useEffect, useState } from "react";
-import SearchForm from "@/components/SearchForm";
-import Filters from "@/components/Filters";
-import JobList from "@/components/JobList";
+import SearchForm from "components/SearchForm";
+import Filters from "components/Filters";
+import JobList from "components/JobList";
 
 interface Job {
   id: string;

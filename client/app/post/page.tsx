@@ -1,5 +1,5 @@
 "use client";
-import JobForm from "@/components/JobPost/JobForm";
+import JobForm from "components/JobPost/JobForm";
 
 export default function PostJobPage() {
   return (

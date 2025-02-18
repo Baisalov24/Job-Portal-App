@@ -1,6 +1,6 @@
 "use client";
-import { useGlobalContext } from "@/context/globalContext";
-import { useJobsContext } from "@/context/jobsContext";
+import { useGlobalContext } from "context/globalContext";
+import { useJobsContext } from "context/jobsContext";
 import { Job } from "@/types/types";
 import { Calendar } from "lucide-react";
 import Image from "next/image";
