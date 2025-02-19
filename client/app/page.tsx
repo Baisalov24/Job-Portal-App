@@ -1,8 +1,8 @@
 "use client";
-import Footer from "@/Components/Footer";
-import Header from "@/Components/Header";
-import { Badge } from "@/Components/ui/badge";
-import { Button } from "@/Components/ui/button";
+import Footer from "@/components/Footer";
+import Header from "@/components/Header";
+import { Badge } from "@/components/ui/badge";
+import { Button } from "@/components/ui/button";
 import {
   Card,
   CardContent,
@@ -10,8 +10,8 @@ import {
   CardFooter,
   CardHeader,
   CardTitle,
-} from "@/Components/ui/card";
-import { Input } from "@/Components/ui/input";
+} from "@/components/ui/card";
+import { Input } from "@/components/ui/input";
 import { useGlobalContext } from "@/context/globalContext";
 import {
   Briefcase,
