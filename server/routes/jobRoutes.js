@@ -8,7 +8,7 @@ import {
   likeJob,
   getJobById,
   deleteJob,
-} from "../controllers/jobController.js";
+} from "../controllers/jobControllers.js";
 import protect from "../middleware/protect.js";
 
 const router = express.Router();
