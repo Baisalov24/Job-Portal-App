@@ -1,1 +1,0 @@
-self.__REACT_LOADABLE_MANIFEST='{"Components\\\\JobPost\\\\JobDetails.tsx -> react-quill-new":{"id":8519,"files":["static/chunks/519.42429efc282803bd.js"]}}';
