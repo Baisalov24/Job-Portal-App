@@ -170,7 +170,7 @@ export const JobsContextProvider = ({ children }) => {
     }
   };
 
-  //
+
   const handleSearchChange = (searchName, value) => {
     setSearchQuery((prev) => ({ ...prev, [searchName]: value }));
   };
