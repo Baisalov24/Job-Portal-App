@@ -1,6 +1,6 @@
 "use client";
 import Filters from "@/Components/Filters";
-import Footer from "@/Components/Footer";
+import Footer from "@/Components/Footer"; 
 import Header from "@/Components/Header";
 import JobCard from "@/Components/JobItem/JobCard";
 import SearchForm from "@/Components/SearchForm";
@@ -14,7 +14,7 @@ function page() {
   const { jobs, filters } = useJobsContext();
   const [columns, setColumns] = React.useState(3);
 
-  // cycle through 1, 2, 3 columns
+
   const toggleGridColumns = () => {
     setColumns((prev) => (prev === 3 ? 2 : prev === 2 ? 1 : 3));
   };
