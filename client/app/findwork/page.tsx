@@ -1,6 +1,6 @@
 "use client";
 import Filters from "@/Components/Filters";
-import Footer from "@/Components/Footer"; 
+import Footer from "@/Components/Footer";
 import Header from "@/Components/Header";
 import JobCard from "@/Components/JobItem/JobCard";
 import SearchForm from "@/Components/SearchForm";
