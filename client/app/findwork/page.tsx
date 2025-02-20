@@ -1,9 +1,9 @@
 "use client";
-import Filters from "@/Components/Filters";
-import Footer from "@/Components/Footer";
-import Header from "@/Components/Header";
-import JobCard from "@/Components/JobItem/JobCard";
-import SearchForm from "@/Components/SearchForm";
+import Filters from "@/components/Filters";
+import Footer from "@/components/Footer";
+import Header from "@/components/Header";
+import JobCard from "@/components/JobItem/JobCard";
+import SearchForm from "@/components/SearchForm";
 import { useJobsContext } from "@/context/jobsContext";
 import { Job } from "@/types/types";
 import { grip, list, table } from "@/utils/Icons";

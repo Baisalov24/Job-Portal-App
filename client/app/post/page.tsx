@@ -1,6 +1,6 @@
 "use client";
-import Header from "@/Components/Header";
-import JobForm from "@/Components/JobPost/JobForm";
+import Header from "@/components/Header";
+import JobForm from "@/components/JobPost/JobForm";
 import { useGlobalContext } from "@/context/globalContext";
 import { useRouter } from "next/navigation";
 import React, { useEffect } from "react";

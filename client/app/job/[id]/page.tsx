@@ -1,7 +1,7 @@
 "use client";
-import Footer from "@/Components/Footer";
-import Header from "@/Components/Header";
-import JobCard from "@/Components/JobItem/JobCard";
+import Footer from "@/components/Footer";
+import Header from "@/components/Header";
+import JobCard from "@/components/JobItem/JobCard";
 import { useGlobalContext } from "@/context/globalContext";
 import { useJobsContext } from "@/context/jobsContext";
 import { Job } from "@/types/types";
