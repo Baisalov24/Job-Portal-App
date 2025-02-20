@@ -6,7 +6,7 @@ import { useRouter } from "next/navigation";
 
 const JobsContext = createContext();
 
-axios.defaults.baseURL = "http://localhost:5000";
+axios.defaults.baseURL = "https://jobfindr-q1cl.onrender.com";
 axios.defaults.withCredentials = true;
 
 export const JobsContextProvider = ({ children }) => {
@@ -22,7 +22,6 @@ export const JobsContextProvider = ({ children }) => {
     location: "",
     title: "",
   });
-
 
   const [filters, setFilters] = useState({
     fullTime: false,
@@ -58,7 +57,6 @@ export const JobsContextProvider = ({ children }) => {
 
       setJobs((prevJobs) => [res.data, ...prevJobs]);
 
-
       if (userProfile._id) {
         setUserJobs((prevUserJobs) => [res.data, ...prevUserJobs]);
         await getUserJobs(userProfile._id);
@@ -88,18 +86,15 @@ export const JobsContextProvider = ({ children }) => {
   const searchJobs = async (tags, location, title) => {
     setLoading(true);
     try {
-   
       const query = new URLSearchParams();
 
       if (tags) query.append("tags", tags);
       if (location) query.append("location", location);
       if (title) query.append("title", title);
 
-  
 
       const res = await axios.get(`/api/v1/jobs/search?${query.toString()}`);
 
-      
       setJobs(res.data);
       setLoading(false);
     } catch (error) {
@@ -108,7 +103,6 @@ export const JobsContextProvider = ({ children }) => {
       setLoading(false);
     }
   };
-
 
   const getJobById = async (id) => {
     setLoading(true);
@@ -124,7 +118,6 @@ export const JobsContextProvider = ({ children }) => {
     }
   };
 
- 
   const likeJob = async (jobId) => {
     console.log("Job liked", jobId);
     try {
@@ -157,7 +150,6 @@ export const JobsContextProvider = ({ children }) => {
     }
   };
 
-
   const deleteJob = async (jobId) => {
     try {
       await axios.delete(`/api/v1/jobs/${jobId}`);
@@ -169,7 +161,6 @@ export const JobsContextProvider = ({ children }) => {
       console.log("Error deleting job", error);
     }
   };
-
 
   const handleSearchChange = (searchName, value) => {
     setSearchQuery((prev) => ({ ...prev, [searchName]: value }));

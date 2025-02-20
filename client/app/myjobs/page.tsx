@@ -1,7 +1,7 @@
 "use client";
-import Footer from "@/components/Footer";
-import Header from "@/components/Header";
-import MyJob from "@/components/JobItem/MyJob";
+import Footer from "@/Components/Footer";
+import Header from "@/Components/Header";
+import MyJob from "@/Components/JobItem/MyJob";
 import { useGlobalContext } from "@/context/globalContext";
 import { useJobsContext } from "@/context/jobsContext";
 import { Job } from "@/types/types";
@@ -20,7 +20,7 @@ function page() {
 
   useEffect(() => {
     if (!loading && !isAuthenticated) {
-      router.push("http://localhost:5000/login");
+      router.push("https://jobfindr-q1cl.onrender.com/login");
     }
   }, [isAuthenticated]);
 

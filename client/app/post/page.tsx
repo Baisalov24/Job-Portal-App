@@ -1,6 +1,6 @@
 "use client";
-import Header from "@/components/Header";
-import JobForm from "@/components/JobPost/JobForm";
+import Header from "@/Components/Header";
+import JobForm from "@/Components/JobPost/JobForm";
 import { useGlobalContext } from "@/context/globalContext";
 import { useRouter } from "next/navigation";
 import React, { useEffect } from "react";
@@ -11,7 +11,7 @@ function page() {
 
   useEffect(() => {
     if (!loading && !isAuthenticated) {
-      router.push("https://test-q1cl.onrender.com/login");
+      router.push("https://jobfindr-q1cl.onrender.com/login");
     }
   }, [isAuthenticated]);
   return (

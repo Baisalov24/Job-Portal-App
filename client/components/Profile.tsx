@@ -7,7 +7,7 @@ import {
   DropdownMenuLabel,
   DropdownMenuSeparator,
   DropdownMenuTrigger,
-} from "@/components/ui/dropdown-menu";
+} from "@/Components/ui/dropdown-menu";
 import { Settings, LogOut } from "lucide-react";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
@@ -53,7 +53,7 @@ function Profile() {
         <DropdownMenuItem
           className="cursor-pointer"
           onClick={() => {
-            router.push("http://localhost:5000/logout");
+            router.push("https://jobfindr-q1cl.onrender.com/logout");
           }}
         >
           <LogOut className="mr-2 h-4 w-4" />

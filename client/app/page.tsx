@@ -1,8 +1,8 @@
 "use client";
-import Footer from "@/components/Footer";
-import Header from "@/components/Header";
-import { Badge } from "@/components/ui/badge";
-import { Button } from "@/components/ui/button";
+import Footer from "@/Components/Footer";
+import Header from "@/Components/Header";
+import { Badge } from "@/Components/ui/badge";
+import { Button } from "@/Components/ui/button";
 import {
   Card,
   CardContent,
@@ -10,8 +10,8 @@ import {
   CardFooter,
   CardHeader,
   CardTitle,
-} from "@/components/ui/card";
-import { Input } from "@/components/ui/input";
+} from "@/Components/ui/card";
+import { Input } from "@/Components/ui/input";
 import { useGlobalContext } from "@/context/globalContext";
 import {
   Briefcase,
@@ -96,7 +96,7 @@ export default function Home() {
         <div className="container mx-auto px-4">
           <h2 className="text-3xl font-bold text-center mb-12">
             Why Choose{" "}
-            <span className="text-[#7263f3] font-extrabold">JobKG</span>
+            <span className="text-[#7263f3] font-extrabold">JobFindr</span>
           </h2>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">

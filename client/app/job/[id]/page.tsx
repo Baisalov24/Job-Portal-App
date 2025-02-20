@@ -1,12 +1,12 @@
 "use client";
-import Footer from "@/components/Footer";
-import Header from "@/components/Header";
-import JobCard from "@/components/JobItem/JobCard";
+import Footer from "@/Components/Footer";
+import Header from "@/Components/Header";
+import JobCard from "@/Components/JobItem/JobCard";
 import { useGlobalContext } from "@/context/globalContext";
 import { useJobsContext } from "@/context/jobsContext";
 import { Job } from "@/types/types";
 import formatMoney from "@/utils/formatMoney";
-import { formatDates } from "@/utils/formatDates";
+import { formatDates } from "@/utils/fotmatDates";
 import { Bookmark } from "lucide-react";
 import Image from "next/image";
 import { useParams, useRouter } from "next/navigation";
@@ -100,7 +100,7 @@ function page() {
                 onClick={() => {
                   isAuthenticated
                     ? handleLike(job._id)
-                    : router.push("http://localhost:5000/login");
+                    : router.push("https://jobfindr-q1cl.onrender.com/login");
                 }}
               >
                 {isLiked ? bookmark : bookmarkEmpty}
@@ -176,7 +176,7 @@ function page() {
                   toast.error("You have already applied to this job");
                 }
               } else {
-                router.push("http://localhost:5000/login");
+                router.push("https://jobfindr-q1cl.onrender.com/login");
               }
             }}
           >

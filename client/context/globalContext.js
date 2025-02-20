@@ -10,7 +10,7 @@ import { useRouter } from "next/navigation";
 
 const GlobalContext = createContext();
 
-axios.defaults.baseURL = "http://localhost:5000";
+axios.defaults.baseURL = "https://jobfindr-q1cl.onrender.com";
 axios.defaults.withCredentials = true;
 
 export const GlobalContextProvider = ({ children }) => {
@@ -19,7 +19,7 @@ export const GlobalContextProvider = ({ children }) => {
   const [userProfile, setUserProfile] = useState({});
   const [loading, setLoading] = useState(false);
 
-  // input state
+  
   const [jobTitle, setJobTitle] = useState("");
   const [jobDescription, setJobDescription] = useState("");
   const [salary, setSalary] = useState(0);

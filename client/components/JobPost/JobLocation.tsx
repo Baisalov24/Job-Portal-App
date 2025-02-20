@@ -5,7 +5,7 @@ import { Label } from "../ui/label";
 import { Input } from "../ui/input";
 
 function JobLocation() {
-  const { setLocation, location } = useGlobalContext(); 
+  const { setLocation, location } = useGlobalContext();
 
   const handleLocationChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
