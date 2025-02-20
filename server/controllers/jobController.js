@@ -75,12 +75,11 @@ export const createJob = asyncHandler(async (req, res) => {
   }
 });
 
-
 export const getJobs = asyncHandler(async (req, res) => {
   try {
     const jobs = await Job.find({})
       .populate("createdBy", "name profilePicture")
-      .sort({ createdAt: -1 }); 
+      .sort({ createdAt: -1 });
 
     return res.status(200).json(jobs);
   } catch (error) {
@@ -111,7 +110,6 @@ export const getJobsByUser = asyncHandler(async (req, res) => {
     });
   }
 });
-
 
 export const searchJobs = asyncHandler(async (req, res) => {
   try {
@@ -145,7 +143,6 @@ export const searchJobs = asyncHandler(async (req, res) => {
   }
 });
 
-
 export const applyJob = asyncHandler(async (req, res) => {
   try {
     const job = await Job.findById(req.params.id);
@@ -176,7 +173,6 @@ export const applyJob = asyncHandler(async (req, res) => {
     });
   }
 });
-
 
 export const likeJob = asyncHandler(async (req, res) => {
   try {
@@ -211,7 +207,6 @@ export const likeJob = asyncHandler(async (req, res) => {
   }
 });
 
-
 export const getJobById = asyncHandler(async (req, res) => {
   try {
     const { id } = req.params;
@@ -233,7 +228,6 @@ export const getJobById = asyncHandler(async (req, res) => {
     });
   }
 });
-
 
 export const deleteJob = asyncHandler(async (req, res) => {
   try {

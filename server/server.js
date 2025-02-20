@@ -13,30 +13,24 @@ dotenv.config();
 const app = express();
 
 const config = {
-  authRequired: true,
+  authRequired: false,
   auth0Logout: true,
   secret: process.env.SECRET,
   baseURL: process.env.BASE_URL,
   clientID: process.env.CLIENT_ID,
   issuerBaseURL: process.env.ISSUER_BASE_URL,
-  clientSecret: process.env.CLIENT_SECRET,
   routes: {
     postLogoutRedirect: process.env.CLIENT_URL,
     callback: "/callback",
     logout: "/logout",
     login: "/login",
   },
-  authorizationParams: {
-    response_type: "code",
-    scope: "openid profile email",
-    state: false, 
-  },
 
   session: {
     absoluteDuration: 30 * 24 * 60 * 60 * 1000,
     cookie: {
       domain: "jobfindr-q1cl.onrender.com",
-      secure: false,
+      secure: true,
       sameSite: "None",
     },
   },
@@ -118,4 +112,3 @@ const server = async () => {
 };
 
 server();
-
